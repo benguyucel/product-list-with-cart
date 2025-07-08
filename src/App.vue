@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto pt-16">
+  <div class="container mx-auto pt-16" role="main">
     <div class="grid md:grid-cols-10 gap-10">
       <div class="col-span-6 xl:col-span-7 py-5">
         <h1 class="text-4xl font-extrabold text-custom-rose-900 mb-16">Desserts</h1>
@@ -15,13 +15,13 @@
            (max-width: 768px) 100vw,
            1280px" :alt="product.name" class="w-full rounded-2xl" />
 
-              <button class="add-to-cart-button" v-if="!cartItems.some(item => item.id === product.id)"
+              <button type="button" class="add-to-cart-button" v-if="!cartItems.some(item => item.id === product.id)"
                 @click="addToCart(product)">
                 <AddToCartIcon />
                 <span>Add
                   to Cart</span>
               </button>
-              <button class="quantity-button" v-if="cartItems.some(item => item.id === product.id)">
+              <button type="button" class="quantity-button" v-if="cartItems.some(item => item.id === product.id)">
                 <div @click="decrementQuantity(product)"
                   class="w-6 h-6 rounded-full flex items-center justify-center border-1 border-white cursor-pointer  hover:bg-white transition-all duration-300 hover:text-red-700">
                   <DecrementIcon />
@@ -59,7 +59,7 @@
                   }}</span>
                 </div>
                 <div>
-                  <button @click="removeFromCart(cartItem)"
+                  <button type="button" @click="removeFromCart(cartItem)"
                     class="cursor-pointer text-custom-rose-500 border p-1 rounded-full hover:text-custom-rose-900 hover:border-custom-rose-900 transition-all duration-300">
                     <RemoveIcon />
                     <span class="sr-only">Remove</span>
@@ -84,7 +84,7 @@
               class="py-3 flex items-center justify-center gap-1 text-center text-custom-rose-900 bg-custom-rose-50 text-sm">
               <CarbonIcon /> This is a <span class="font-semibold">carbon-neutral</span> delivery
             </p>
-            <button @click="isConfirmedModalOpen = true" v-if="cartItems.length > 0"
+            <button type="button" @click="isConfirmedModalOpen = true" v-if="cartItems.length > 0"
               class="py-3 bg-custom-red rounded-4xl text-white mt-2 cursor-pointer">Confirm Order </button>
             <!-- Confirm Order -->
             <div v-if="isConfirmedModalOpen"
@@ -111,7 +111,7 @@
                       item.price * item.quantity, 0).toFixed(2)}}</span>
                   </div>
                 </div>
-                <button @click="handleStartNewOrder"
+                <button type="button" @click="handleStartNewOrder"
                   class="py-3 bg-custom-red rounded-3xl text-white mt-2 cursor-pointer w-full flex items-center justify-center gap-x-2">
                   <span>Start new Order</span>
                 </button>
